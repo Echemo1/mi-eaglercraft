@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Drive - Mi Unidad</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f1f3f4; margin: 0; }
+        .card { background: white; padding: 40px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-top: 5px solid #1a73e8; }
+        .btn { background: #1a73e8; color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img src="https://gstatic.com" width="50"><br><br>
+        <h2>Proyecto_Video_Mate.mp4</h2>
+        <button id="launch" class="btn">ABRIR VIDEO</button>
+    </div>
+
+    <script>
+        document.getElementById('launch').onclick = function() {
+            // 1. Abrimos una pestaña totalmente vacía (about:blank)
+            const win = window.open('about:blank', '_blank');
+
+            if (win) {
+                // 2. Creamos un iframe por código para que no haya rastro en el HTML inicial
+                const iframe = win.document.createElement('iframe');
+                
+                // 3. Estilizamos el iframe para que sea invisible y ocupe todo el espacio
+                iframe.style.position = "fixed";
+                iframe.style.top = "0";
+                iframe.style.left = "0";
+                iframe.style.width = "100vw";
+                iframe.style.height = "100vh";
+                iframe.style.border = "none";
+                iframe.style.margin = "0";
+                iframe.style.padding = "0";
+                
+                // 4. Ponemos la URL del juego
+                iframe.src = "https://eagler.online";
+
+                // 5. Inyectamos el iframe en la nueva pestaña
+                win.document.body.style.margin = "0";
+                win.document.body.appendChild(iframe);
+                
+                // 6. Cambiamos el título de la pestaña para que no diga "about:blank"
+                win.document.title = "Google Docs";
+            } else {
+                alert("¡Permite las ventanas emergentes!");
+            }
+        };
+    </script>
+</body>
+</html>
