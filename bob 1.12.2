@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Drive - Mi Unidad</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f1f3f4; margin: 0; }
+        .card { background: white; padding: 40px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-top: 5px solid #1a73e8; }
+        .btn { background: #1a73e8; color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img src="https://gstatic.com" width="50"><br><br>
+        <h2>Proyecto_Video_Mate.mp4</h2>
+        <button id="launch" class="btn">REPRODUCIR VIDEO</button>
+    </div>
+
+    <script>
+        document.getElementById('launch').onclick = function() {
+            // Este es el "corazón" de la página que vamos a crear
+            const htmlContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Google Drive - Visualizador</title>
+                    <style>
+                        body, html { margin:0; padding:0; height:100%; overflow:hidden; background: black; }
+                        iframe { width:100%; height:100%; border:none; }
+                    </style>
+                </head>
+                <body>
+                    <iframe src="https://eagler.online"></iframe>
+                </body>
+                </html>
+            `;
+
+            // Creamos un "Blob" (un archivo virtual en memoria)
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const blobUrl = URL.createObjectURL(blob);
+
+            // Abrimos ese archivo virtual en una pestaña nueva
+            const win = window.open(blobUrl, '_blank');
+
+            if (!win) {
+                alert("¡Permite las ventanas emergentes!");
+            }
+        };
+    </script>
+</body>
+</html>
