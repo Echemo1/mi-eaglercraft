@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Eaglercraft Personalizado</title>
+    <meta charset="UTF-8">
+    <!-- Estilos básicos para que el juego ocupe toda la pantalla -->
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: black; }
+        canvas { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+    <script type="text/javascript" src="https://eagler.online"></script>
+    <script type="text/javascript">
+        // Configuración del juego
+        const eaglercraftXOpts = {
+            container: "game_frame",
+            assets_epk: "https://eagler.online",
+            worker_js: "https://eagler.online",
+            wasm_binary: "https://eagler.online",
+            worldsDB: "worlds_main",
+            servers: [
+                { addr: "wss://poyonix.com", name: "Poyonix Server" },
+                { addr: "wss://aeon-network.net", name: "Aeon Network" }
+            ]
+        };
+        // Iniciar el juego
+        main();
+    </script>
+    <div id="game_frame"></div>
+</body>
+</html>
